@@ -1,2 +1,2 @@
 # MarvelousVolleyBluehairsProject2
-Coding Boot camp project 2
+Coding boot camp project 2
