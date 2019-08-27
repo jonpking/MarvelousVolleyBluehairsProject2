@@ -15,11 +15,46 @@
 
 <body>
 
-    <div class="p-5 container h-100 ">
+    <!-- CONTROLS ENTIRE BACKGROUND COLOR! -->
+    <!-- <div style="background-color: #9FCC2E">  -->
+
+    <!-- NAV BAR -->
+    <ul class="nav justify-content-end" style="background-color: #000000">
+        <li class="nav-item">
+            <a class="nav-link active text-white" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="#">Inventory</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+    </ul>
+
+    <!-- JUMBOTRON -->
+    <div class="jumbotron jumbotron-fluid" style="background-color: #272b27">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="display-5 text-justify" style="color:#6AB061"> Manage your game inventory. So you can find
+                    the right game, every time.</h1>
+                <img src="assets/images/AdobeStock_260199610.jpeg" class="rounded"
+                    style="width:65%; height: auto%; overflow: hidden" alt="Responsive image">
+            </div>
+            <!-- <h1 class="display-5 text-center"> Manage your game inventory. So you can find the right game, every time.</h1> -->
+            <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
+        </div>
+    </div>
+
+
+    <!-- LOGIN FORM -->
+    <div class="p-5 container h-100">
 
         <div class="d-flex justify-content-center h-100">
-            <div class="card p-3 mb-2 bg-dark text-white" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+            <div class="card p-3 mb-2 bg-transparent text-dark" style="width: 18rem;">
+                <img src="assets/images/SVG/Project Logo.svg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Login</h5>
 
@@ -40,7 +75,7 @@
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Check me out</label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
                     </form>
 
                 </div>
@@ -49,6 +84,8 @@
         </div>
 
     </div>
+
+    <!-- </div> -->
 
 
     <!-- Optional JavaScript -->
