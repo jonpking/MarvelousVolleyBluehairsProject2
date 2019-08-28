@@ -1,0 +1,23 @@
+{
+  "name": "marvelousvolleybluehairsproject2",
+  "version": "1.0.0",
+  "description": "Coding boot camp project 2",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonpking/MarvelousVolleyBluehairsProject2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonpking/MarvelousVolleyBluehairsProject2/issues"
+  },
+  "homepage": "https://github.com/jonpking/MarvelousVolleyBluehairsProject2#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sequelize": "^5.16.0"
+  }
+}
