@@ -63,19 +63,63 @@
                             <label for="exampleInputEmail1">Email address</label>
                             <input type="email" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                                else.</small>
+
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
                             <input type="password" class="form-control" id="exampleInputPassword1"
                                 placeholder="Password">
                         </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
+
                         <button type="submit" class="btn btn-success">Submit</button>
+
+
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                            data-target="#myModal">Create an Account</button>
+
+                        <!-- Modal -->
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <h4 class="modal-title">Registration</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="POST" action="/register">
+                                            <div class="form-group">
+                                                <label for="username">Username</label>
+                                                <input type="text" name="username" placeholder="Username">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="email" name="email" placeholder="Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password">Password</label>
+                                                <input type="password" name="password" placeholder="Password">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="passwordMatch">Re-Enter Password</label>
+                                                <input type="password" name="passwordMatch" placeholder="Password">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+
+
+                                        </form>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </form>
 
                 </div>
