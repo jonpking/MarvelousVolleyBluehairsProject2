@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Inventory</title>
+</head>
+
+<body>
+
+      <!-- NAV BAR -->
+      <ul class="nav justify-content-end" style="background-color: #000000">
+          <li class="nav-item">
+              <a class="nav-link active text-white" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link text-white" href="#">Login</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link text-white" href="#">Inventory</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+      </ul>
+
+
+
+ <!-- FIND GAME -->
+    <div class="p-5 container h-100" > 
+    <div class = "p-3 mb-2">
+        <form>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Find your game</label>
+                  <input class="form-control" type="text" placeholder="Ex. Age of Craft">
+                </div>
+              </form>
+              <button type="submit" id="searchSubmit" class="btn btn-success">Submit</button>
+</div>
+</div>
+
+
+<!-- TABLE  -->
+<div class="p-5 container h-100"> 
+<!-- FILTERS -->
+<div class="btn-group">
+    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Action
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+  </div>
+
+  <div class="btn-group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Action
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+      </div>
+    </div>
+
+
+
+<table class="table table-hover" >
+        <thead class="thead text-white" style="background-color: #272b27">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Image</th>
+            <th scope="col">Game Title </th>
+            <th scope="col">Description</th>
+            <th scope="col">Players</th>
+            <th scope="col">Playing Time</th>
+            <th scope="col">Age</th>
+            <th scope="col">Complexity Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td img src="https://cf.geekdo-images.com/itemrep/img/oVEpcbtyWkJjIjk1peTJo6hI1yk=/fit-in/246x300/pic4884996.jpg"></td>
+            <td>Tapestry</td>
+            <td>Tapestry is a two-hour civilization game for 1-5 players designed by Jamey Stegmaier.
+
+                Create the civilization with the most storied history, starting at the beginning of humankind and reaching into the future. The paths you choose will vary greatly from real-world events or people — your civilization is unique!
+                
+                In Tapestry, you start from nothing and advance on any of the four advancement tracks (science, technology, exploration, and military) to earn progressively better benefits. You can focus on a specific track or take a more balanced approach. You will also improve your income, build your capital city, leverage your asymmetric abilities, earn victory points, and gain tapestry cards that will tell the story of your civilization.
+                
+                —description from the publisher</td>
+            <td>1-5</td>
+            <td>90-120 Min</td>
+            <td>12+</td>
+            <td>2.84</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+<div class="modal" id="gameSearchModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Search Results</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Game Info Here</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Confirm Selection</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/inventory.js" type="text/javascript"></script>
+</body>
+
+</html>
