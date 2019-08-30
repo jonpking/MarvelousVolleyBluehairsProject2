@@ -2,10 +2,6 @@ const path = require("path");
 
 module.exports = function (app) {
 
-  app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/home.html"));
-  });
-
   app.get("/wishlist", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/wishlist.html"));
   });
@@ -14,11 +10,7 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
-  app.get("/data", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/data.html"));
-  });
-
-  app.get("/form", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/form.html"));
+  app.get("/inventory", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/inventory.html"));
   });
 };
