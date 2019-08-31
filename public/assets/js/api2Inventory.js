@@ -1,46 +1,43 @@
-$("#searchSubmit").on("click", function () {
-    event.preventDefault();
-    $("#gameSearchModal").modal("show");
-    var game = $("#searchSubmit").val().trim();
-    console.log(game);
-    var queryURL = "https://www.boardgameatlas.com/api/search?limit=10&name=" + game + "&client_id=1FCJGZDFEs";
-    // var queryURL = "https://www.boardgamegeek.com/xmlapi2/search?query=" + game;
-  ​
-  ​
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function (response) {
-      console.log(response);
-  ​
-      for (let index = 0; index < response.games.length; index++) {
-        const name = response.games[index].name;
-        const thumbUrl = response.game[index].thumb_url;
-        const yearPublished = response.game[index].year_published;
-        const description = response.game[index].description;
-        
-        console.log(element);
-  ​
-        const b = $("<br>")
-  ​
-        const gameDiv = $("#boardGameSection")
-        gameDiv.append(name)
-        gameDiv.append(b)
-        gameDiv.append(thumbUrl)
-        gameDiv.append(b)
-        gameDiv.append(yearPublished)
-        gameDiv.append(b)
-        gameDiv.append(description)
-     
-      }
-    });
+// SEARCH - CLICK HANDLER
+// ==========================================================
+
+$("#searchSubmit").on("click", function (event) {
+  event.preventDefault();
+  $("#gameSearchModal").modal("show");
+  var game = $(".form-control").val().trim();
+  console.log("This game was searched: " + game);
+  const queryURL = "https://www.boardgameatlas.com/api/search?limit=10&name=" + game + "&client_id=1FCJGZDFEs";
+
+  // AJAX CALL
+  // ==========================================================
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
+    console.log(response);
+
+  // LOOP THROUGH RESULTS + SELECT MENU
+  // ==========================================================
+    for (let index = 0; index < response.games.length; index++) {
+      const gameName = response.games[index].name;
+      $(".custom-select").append($("<option/>", {
+        text: gameName,
+        value: gameName
+      }))
+    }
+  });
+
+ 
 });
 
-// $("#searchForm").on("submit", gamesToDB);
 
-// const gamesToDB = (gameInfo) => {
-//     $.post("/api/games", gameInfo, function () {
-
-//     });
-// };
-
+// SEARCH SUBMIT - CLICK HANDLER
+// ==========================================================
+$("#confirmSelect").on("click", function (event){
+  event.preventDefault();
+  $("#gameSearchModal").modal("hide");
+  $(".form-control").empty();
+  var selectedGame = $(".custom-select option:selected").text();
+  console.log(selectedGame);
+})
