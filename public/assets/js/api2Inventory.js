@@ -40,4 +40,31 @@ $("#confirmSelect").on("click", function (event){
   $(".form-control").empty();
   var selectedGame = $(".custom-select option:selected").text();
   console.log(selectedGame);
-})
+  addGameToDB(selectedGame)
+});
+
+
+function addGameToDB(selectedGame) {
+  $.post("/api/games", selectedGame)
+    .then(function(){
+      window.location.reload();
+    });
+}
+
+function getGameInventory() {
+  $.get("/api/games", function(data) {
+    
+  });
+}
+
+function deleteGameFromInventory() {
+  // var listItemData = $(this).parent("td").parent("tr").data("author");
+  // var id = listItemData.id;
+  $.ajax({
+    method: "DELETE",
+    url: "/api/games/" + id
+  })
+    .then(function(){
+      window.location.reload();
+    });
+}
