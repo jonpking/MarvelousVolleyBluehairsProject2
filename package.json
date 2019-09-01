@@ -1,7 +1,7 @@
 {
   "name": "marvelousvolleybluehairsproject2",
   "version": "1.0.0",
-  "description": "Coding boot camp project 2",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,7 +19,9 @@
   "homepage": "https://github.com/jonpking/MarvelousVolleyBluehairsProject2#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
     "mysql2": "^1.7.0",
-    "sequelize": "^5.17.1"
+    "path": "^0.12.7",
+    "sequelize": "^5.17.2"
   }
 }
