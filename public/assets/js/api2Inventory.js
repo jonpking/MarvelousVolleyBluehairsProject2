@@ -52,5 +52,19 @@ function addGameToDB(selectedGame) {
 }
 
 function getGameInventory() {
+  $.get("/api/games", function(data) {
+    
+  });
+}
 
+function deleteGameFromInventory() {
+  // var listItemData = $(this).parent("td").parent("tr").data("author");
+  // var id = listItemData.id;
+  $.ajax({
+    method: "DELETE",
+    url: "/api/games/" + id
+  })
+    .then(function(){
+      window.location.reload();
+    });
 }

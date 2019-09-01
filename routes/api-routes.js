@@ -74,10 +74,11 @@ module.exports = function (app) {
     });
   });
 
-  app.delete("/api/games/:id", function (req, res) {
+  app.delete("/api/games/:game", function (req, res) {
     db.Games.destroy({
       where: {
-        id: req.params.id
+        game: req.params.game,
+        id: req.user.id
       }
     }).then(function (dbGames) {
       res.json(dbGames);
