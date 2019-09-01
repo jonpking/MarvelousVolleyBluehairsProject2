@@ -5,7 +5,7 @@ module.exports = function (app) {
   app.get("/api/games", function (req, res) {
     db.Games.findAll({
       where: {
-        // user id = person who is logged in ?
+        id: req.user.id
       },
       include: [db.Users]
     }).then(function (dbGames) {
@@ -17,8 +17,8 @@ module.exports = function (app) {
   app.get("/api/games/wishlist", function (req, res) {
     db.Games.findAll({
       where: {
-        wishlisted: true
-        // user id = person who is logged in ?
+        wishlisted: true,
+        id: req.user.id
       },
       include: [db.Users]
     }).then(function (dbGames) {
@@ -27,16 +27,18 @@ module.exports = function (app) {
   });
 
   // get a single game owned by a single user (search functionality)
-  app.get("/api/games/:id", function (req, res) {
+  app.get("/api/games/:game", function (req, res) {
     db.Games.findOne({
       where: {
-        id: req.params.id
+        game: req.params.game,
+        id: req.user.id
       },
       include: [db.Users]
     }).then(function (dbGames) {
       res.json(dbGames);
     });
   });
+
   // not sure if this will work properly or not
 
   // app.get("/api/games/:page", function (req, res) {
