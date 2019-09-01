@@ -64,7 +64,10 @@ module.exports = function (app) {
   // });
 
   app.post("/api/games", function (req, res) {
-    db.Games.create(req.body).then(function (dbGames) {
+    db.Games.create({
+      title: req.body.text
+      // other game data
+    }).then(function (dbGames) {
       res.json(dbGames);
     });
   });

@@ -40,4 +40,17 @@ $("#confirmSelect").on("click", function (event){
   $(".form-control").empty();
   var selectedGame = $(".custom-select option:selected").text();
   console.log(selectedGame);
-})
+  addGameToDB(selectedGame)
+});
+
+
+function addGameToDB(selectedGame) {
+  $.post("/api/games", selectedGame)
+    .then(function(){
+      window.location.reload();
+    });
+}
+
+function getGameInventory() {
+
+}
