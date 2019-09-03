@@ -25,6 +25,7 @@ module.exports = function (sequelize, DataTypes) {
         on_wishlist: {
             type: DataTypes.BOOLEAN,
             allowNull: false
+            
         }
     });
 
