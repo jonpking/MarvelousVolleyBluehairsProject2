@@ -7,6 +7,9 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
+        image_URL: {
+            type: DataTypes.STRING
+        },
         player_min: {
             type: DataTypes.INTEGER
         },
