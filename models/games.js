@@ -6,7 +6,8 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 len: [1]
             }
-        },
+        }
+        ,
         image_URL: {
             type: DataTypes.STRING
         },
@@ -28,7 +29,9 @@ module.exports = function (sequelize, DataTypes) {
         on_wishlist: {
             type: DataTypes.BOOLEAN,
             allowNull: false
-            
+        },
+        user_id: {
+            type: DataTypes.INTEGER
         }
     });
 
