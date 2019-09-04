@@ -51,7 +51,7 @@ $("#searchSubmit").on("click", function (event) {
 
   // Make the AJAX request to the API - GETs the JSON data at the queryURL.
   // The data then gets passed as an argument to the updatePage function
-
+ß
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -77,4 +77,13 @@ $("#searchSubmit").on("click", function (event) {
   });
 });
 
+
+// POST ROUTE 
+app.post("/api/games", function (req, res) {
+  db.Games.create({
+  
+  }).then(function (dbGames) {
+    res.json(dbGames);
+  });
+})
 
