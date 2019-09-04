@@ -42,7 +42,7 @@ module.exports = function (app) {
   // not sure if this will work properly or not
 
   // app.get("/api/games/:page", function (req, res) {
-  //   if (req.params.page === wishlist) {
+  //   if (req.params.page === "wishlist") {
   //     db.Games.findAll({
   //       where: {
   //         wishlisted: true
@@ -53,7 +53,7 @@ module.exports = function (app) {
   //       res.json(dbGames);
   //     });
   //   }
-  //   if (req.params.page === home) {
+  //   if (req.params.page === "home") {
   //     db.Games.findAll({
   //       where: {
   //         // user id = person who is logged in ?
