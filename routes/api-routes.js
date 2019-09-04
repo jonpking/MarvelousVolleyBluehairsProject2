@@ -67,8 +67,14 @@ module.exports = function (app) {
 
   app.post("/api/games", function (req, res) {
     db.Games.create({
-      title: req.body.text
-      // other game data
+      title: req.body.text,
+      image_URL: sadfka,
+      player_min: afdssdf,
+      player_max: sadkf,
+      playtime_min: adsf,
+      playtime_max: adsfi,
+      description: akjsfdlsa,
+      on_wishlist: false
     }).then(function (dbGames) {
       res.json(dbGames);
     });
