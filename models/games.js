@@ -23,9 +23,9 @@ module.exports = function (sequelize, DataTypes) {
         playtime_max: {
             type: DataTypes.INTEGER
         },
-        description: {
-            type: DataTypes.STRING
-        },
+        // description: {
+        //     type: DataTypes.STRING
+        // },
         on_wishlist: {
             type: DataTypes.BOOLEAN,
             allowNull: false
@@ -35,13 +35,13 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    Game.associate = function (models) {
-        Game.belongsTo(models.User, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+    // Game.associate = function (models) {
+    //     Game.belongsTo(models.User, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
 
     return Game;
 };
