@@ -24,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER
         },
         description: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         on_wishlist: {
             type: DataTypes.BOOLEAN,
@@ -35,13 +35,13 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    Game.associate = function (models) {
-        Game.belongsTo(models.User, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+    // Game.associate = function (models) {
+    //     Game.belongsTo(models.User, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
 
     return Game;
 };
