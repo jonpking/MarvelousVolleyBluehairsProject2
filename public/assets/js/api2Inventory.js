@@ -76,7 +76,6 @@ $("#searchSubmit").on("click", function (event) {
   });
 });
 
-
 // POST ROUTE 
 function addGameToDB(selectedGames) {
   $.post("/api/games", selectedGames)
