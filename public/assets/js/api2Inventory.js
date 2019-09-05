@@ -77,13 +77,5 @@ $("#searchSubmit").on("click", function (event) {
   });
 });
 
-
-// POST ROUTE 
-app.post("/api/games", function (req, res) {
-  db.Games.create({
-  
-  }).then(function (dbGames) {
-    res.json(dbGames);
-  });
-})
+$.post("/api/games", req, res)
 
