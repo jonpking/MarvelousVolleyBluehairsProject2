@@ -23,9 +23,9 @@ module.exports = function (sequelize, DataTypes) {
         playtime_max: {
             type: DataTypes.INTEGER
         },
-        // description: {
-        //     type: DataTypes.STRING
-        // },
+        description: {
+            type: DataTypes.TEXT
+        },
         on_wishlist: {
             type: DataTypes.BOOLEAN,
             allowNull: false
