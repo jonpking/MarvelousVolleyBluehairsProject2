@@ -26,45 +26,7 @@ module.exports = function (app) {
     });
   });
 
-  // get a single game owned by a single user (search functionality)
-  // app.get("/api/games/:game", function (req, res) {
-  //   db.Games.findOne({
-  //     where: {
-  //       game: req.params.game,
-  //       id: req.user.id
-  //     },
-  //     include: [db.Users]
-  //   }).then(function (dbGames) {
-  //     res.json(dbGames);
-  //   });
-  // });
-
-  // not sure if this will work properly or not
-
-  // app.get("/api/games/:page", function (req, res) {
-  //   if (req.params.page === "wishlist") {
-  //     db.Games.findAll({
-  //       where: {
-  //         wishlisted: true
-  //         // user id = person who is logged in ?
-  //       },
-  //       include: [db.Users]
-  //     }).then(function (dbGames) {
-  //       res.json(dbGames);
-  //     });
-  //   }
-  //   if (req.params.page === "home") {
-  //     db.Games.findAll({
-  //       where: {
-  //         // user id = person who is logged in ?
-  //       },
-  //       include: [db.Users]
-  //     }).then(function (dbGames) {
-  //       res.json(dbGames);
-  //     });
-  //   }
-  // });
-
+  // post new game to inventory
   app.post("/api/games", function (req, res) {
     db.Game.create({
       title: req.body[1],
@@ -80,6 +42,7 @@ module.exports = function (app) {
     });
   });
 
+  // post new game to wishlist
   app.post("/api/games/wishlist", function (req, res) {
     db.Game.create({
       title: req.body[1],
@@ -95,7 +58,20 @@ module.exports = function (app) {
     });
   });
 
+  // delete specific game from inventory
   app.delete("/api/games/:game", function (req, res) {
+    db.Games.destroy({
+      where: {
+        game: req.params.game,
+        id: req.user.id
+      }
+    }).then(function (dbGames) {
+      res.json(dbGames);
+    });
+  });
+
+  // delete specific game from wishlist
+  app.delete("/api/games/wishlist/:game", function (req, res) {
     db.Games.destroy({
       where: {
         game: req.params.game,
