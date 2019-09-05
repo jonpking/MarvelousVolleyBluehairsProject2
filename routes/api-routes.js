@@ -3,11 +3,11 @@ const db = require("../models");
 module.exports = function (app) {
   // get all games owned by a single user
   app.get("/api/games", function (req, res) {
-    db.Games.findAll({
-      where: {
-        id: req.user.id
-      },
-      include: [db.Users]
+    db.Game.findAll({
+      // where: {
+      //   id: req.user.id
+      // },
+      // include: [db.Users]
     }).then(function (dbGames) {
       res.json(dbGames);
     });
@@ -15,12 +15,12 @@ module.exports = function (app) {
 
   // get all games on wishlist of a single user
   app.get("/api/games/wishlist", function (req, res) {
-    db.Games.findAll({
-      where: {
-        wishlisted: true,
-        id: req.user.id
-      },
-      include: [db.Users]
+    db.Game.findAll({
+      // where: {
+      //   wishlisted: true,
+      //   id: req.user.id
+      // },
+      // include: [db.Users]
     }).then(function (dbGames) {
       res.json(dbGames);
     });
@@ -60,7 +60,7 @@ module.exports = function (app) {
 
   // delete specific game from inventory
   app.delete("/api/games/:game", function (req, res) {
-    db.Games.destroy({
+    db.Game.destroy({
       where: {
         game: req.params.game,
         id: req.user.id
@@ -72,7 +72,7 @@ module.exports = function (app) {
 
   // delete specific game from wishlist
   app.delete("/api/games/wishlist/:game", function (req, res) {
-    db.Games.destroy({
+    db.Game.destroy({
       where: {
         game: req.params.game,
         id: req.user.id
