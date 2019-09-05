@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function () {
 
 let finalGame = [];
 
@@ -57,6 +57,7 @@ $("#searchSubmit").on("click", function (event) {
     url: queryURL,
     method: "GET"
   }).then(updatePage).done()
+
   // CLICK HANDLERS - SUBMIT
 // ==========================================================
   $("#confirmSelect").on("click", function (event) {
@@ -88,57 +89,43 @@ function addGameToDB(selectedGames) {
     });
 }
 
+// Add to Wishlist
+  $(".wishList").on("click", function (event) {
+    event.preventDefault();
+    var id = $(this).data("id");
+    var onWishlist = {
+      on_wishlist: 1
+    };
 
+    // Send the PUT request.
+    $.ajax("/api/games/" + id, {
+      type: "PUT",
+      data: onWishlist
+    }).then(
+      function () {
+        console.log("Added Game to Wishlist");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
 
-  // Getting a reference to the input field where user adds a new todo
-  const $newItemInput = $("input.new-item");
-  // Our new todos will go inside the todoContainer
-  const $tbody = $(".tbody");
+  // Delete a Game
+  $(".deleteGame").on("click", function (event) {
+    event.preventDefault();
+    var id = $(this).data("id");
 
-  getdbGames()
-
-  // This function resets the todos displayed with new todos from the database
-  function initializeRows() {
-    $tbody.empty();
-    const rowsToAdd = [];
-    for (let i = 0; i < games.length; i++) {
-      rowsToAdd.push(createNewRow(games[i]));
-    }
-    $tbody.prepend(rowsToAdd);
-  }
-
-function getdbGames() {
-  $.get("/api/games", function(data){
-    games = data;
-    console.log(data)
-    initializeRows();
-  })
-}
-
- // This function constructs a todo-item row
- function createNewRow(games) {
-  const $newInputRow = $(
-    [
-      "<li class='list-group-item todo-item'>",
-      "<span>",
-      games.title,
-      "</span>",
-      "<input type='text' class='edit' style='display: none;'>",
-      "<button class='delete btn btn-danger'>x</button>",
-      "<button class='complete btn btn-primary'>✓</button>",
-      "</li>"
-    ].join("")
-  );
-
-  // $newInputRow.find("button.delete").data("id", todo.id);
-  // $newInputRow.find("input.edit").css("display", "none");
-  $newInputRow.data("games", games);
-  // if (todo.complete) {
-  //   $newInputRow.find("span").css("text-decoration", "line-through");
-  // }
-  return $newInputRow;
-}
-
+    // Send the DELETE request.
+    $.ajax("/api/games/" + id, {
+      type: "DELETE"
+    }).then(
+      function () {
+        console.log("Deleted Game", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
 
 
 });

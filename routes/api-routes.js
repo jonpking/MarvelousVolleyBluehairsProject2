@@ -1,17 +1,32 @@
 const db = require("../models");
 
 module.exports = function (app) {
-  // get all games owned by a single user
-  app.get("/api/games", function (req, res) {
-    db.games.findAll({}).then(function (dbGames) {
-      res.json(dbGames);
+
+    // get all
+    app.get("/", function (req, res) {
+      db.Game.findAll({}).then(function(data) {
+        const obj = {
+          games: data
+        };
+      console.log(obj)
+      res.render("index", obj);
+      });
     });
-  });
 
+    // get all games 
+    app.get("/inventory", function (req, res) {
+      db.Game.findAll({}).then(function(data) {
+        const obj = {
+          games: data
+        };
+      console.log(obj)
+      res.render("inventory", obj);
+      });
+    });
 
   // get all games owned by a single user
   app.get("/api/games", function (req, res) {
-    db.Games.findAll({
+    db.Game.findAll({
       where: {
         id: req.user.id
       },
@@ -23,7 +38,7 @@ module.exports = function (app) {
 
   // get all games on wishlist of a single user
   app.get("/api/games/wishlist", function (req, res) {
-    db.Games.findAll({
+    db.Game.findAll({
       where: {
         wishlisted: true,
         id: req.user.id
@@ -66,21 +81,37 @@ module.exports = function (app) {
     });
   });
 
-  // delete specific game from inventory
-  app.delete("/api/games/:game", function (req, res) {
-    db.Games.destroy({
+
+  app.put("/api/games/:id", function(req, res) {
+    db.Game.update({
+      on_wishlist: req.body.on_wishlist,
+    }, {
       where: {
-        game: req.params.game,
-        id: req.user.id
+          id: req.params.id
+      }
+    }).then(function(result){
+      console.log(result);
+      res.json(result);
+    });
+  });
+
+
+  // delete specific game from inventory
+  app.delete("/api/games/:id", function (req, res) {
+    db.Game.destroy({
+      where: {
+        // game: req.params.game,
+        id: req.params.id
       }
     }).then(function (dbGames) {
+      console.log(dbGames);
       res.json(dbGames);
     });
   });
 
   // delete specific game from wishlist
   app.delete("/api/games/wishlist/:game", function (req, res) {
-    db.Games.destroy({
+    db.Game.destroy({
       where: {
         game: req.params.game,
         id: req.user.id
