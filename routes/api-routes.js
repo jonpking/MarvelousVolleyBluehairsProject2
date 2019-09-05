@@ -3,6 +3,14 @@ const db = require("../models");
 module.exports = function (app) {
   // get all games owned by a single user
   app.get("/api/games", function (req, res) {
+    db.games.findAll({}).then(function (dbGames) {
+      res.json(dbGames);
+    });
+  });
+
+
+  // get all games owned by a single user
+  app.get("/api/games", function (req, res) {
     db.Games.findAll({
       where: {
         id: req.user.id

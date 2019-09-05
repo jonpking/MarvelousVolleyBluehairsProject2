@@ -1,3 +1,5 @@
+$(document).ready(function() {
+
 let finalGame = [];
 
 /**
@@ -85,3 +87,58 @@ function addGameToDB(selectedGames) {
       window.location.reload();
     });
 }
+
+
+
+  // Getting a reference to the input field where user adds a new todo
+  const $newItemInput = $("input.new-item");
+  // Our new todos will go inside the todoContainer
+  const $tbody = $(".tbody");
+
+  getdbGames()
+
+  // This function resets the todos displayed with new todos from the database
+  function initializeRows() {
+    $tbody.empty();
+    const rowsToAdd = [];
+    for (let i = 0; i < games.length; i++) {
+      rowsToAdd.push(createNewRow(games[i]));
+    }
+    $tbody.prepend(rowsToAdd);
+  }
+
+function getdbGames() {
+  $.get("/api/games", function(data){
+    games = data;
+    console.log(data)
+    initializeRows();
+  })
+}
+
+ // This function constructs a todo-item row
+ function createNewRow(games) {
+  const $newInputRow = $(
+    [
+      "<li class='list-group-item todo-item'>",
+      "<span>",
+      games.title,
+      "</span>",
+      "<input type='text' class='edit' style='display: none;'>",
+      "<button class='delete btn btn-danger'>x</button>",
+      "<button class='complete btn btn-primary'>✓</button>",
+      "</li>"
+    ].join("")
+  );
+
+  // $newInputRow.find("button.delete").data("id", todo.id);
+  // $newInputRow.find("input.edit").css("display", "none");
+  $newInputRow.data("games", games);
+  // if (todo.complete) {
+  //   $newInputRow.find("span").css("text-decoration", "line-through");
+  // }
+  return $newInputRow;
+}
+
+
+
+});
