@@ -98,9 +98,9 @@ function registerLogin() {
 }
 
 // LOGIN GET ROUTE
-function retrieveLogin() {
+function retrieveLogin(emailInput, passwordInput) {
   $.ajax({
-    url: "/api/login",
+    url: "/api/login/" + emailInput + "/" + passwordInput,
     method: "GET"
   }).then(function (res){
     // USER LOGIN SUCCESSFUL
@@ -110,14 +110,21 @@ function retrieveLogin() {
     // USER LOGIN FAILED
     else {
       // display login error message
+      $("#invalidLogin").append("<b>INVALID LOGIN</b>");
     }
-  })
+  });
 }
 
 function logout() {
   $("#logoutButton").on("click", function (event) {
     event.preventDefault();
     window.localStorage.removeItem("user_id");
-    window.location.href = //login page
+    window.location.href = login.html
   });
+}
+
+function checkIfLoggedIn() {
+  if (window.localStorage.getItem("user_id" !== undefined)){
+    window.location.href = inventory.html
+  };
 }
