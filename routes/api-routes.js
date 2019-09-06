@@ -1,4 +1,5 @@
 const db = require("../models");
+const bcrypt = require("bcrypt");
 
 module.exports = function (app) {
   // get all games owned by a single user
@@ -24,6 +25,42 @@ module.exports = function (app) {
     }).then(function (dbGames) {
       res.json(dbGames);
     });
+  });
+
+  // get user login
+  app.get("/api/login", function (req, res) {
+    db.User.findOne({
+      where: {
+        id: req.user.id
+      }
+    }).then(function (user) {
+      bcrypt.compare(req.body.password, user.password, function (err, res) {
+        if (res) {
+          // Passwords match
+          res.json({
+            success: true,
+            user: user
+          });
+        } else {
+          // Passwords don't match
+          res.json({
+            success: false
+          });
+        }
+      });
+    });
+  });
+
+  // register a new user login
+  app.post("/api/login/register", function (req, res) {
+    bcrypt.hash(req.body.password, 10, function (err, hash) {
+      db.User.create({
+        user_name: req.body.user_name,
+        password: hash
+      }).then(function (user) {
+        res.json(user);
+      });
+    })
   });
 
   // post new game to inventory
