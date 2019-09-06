@@ -76,11 +76,48 @@ $("#searchSubmit").on("click", function (event) {
   });
 });
 
-// POST ROUTE 
+// GAMES POST ROUTE 
 function addGameToDB(selectedGames) {
   $.post("/api/games", selectedGames)
     .then(function(){
       console.log("posted");
       window.location.reload();
     });
+}
+
+// LOGIN POST ROUTE
+function registerLogin() {
+  const body = {
+    username: Element.val().trim(),
+    password: Element.val().trim()
+  }
+  $.post("/api/login/register", body)
+  .then(function(res){
+    window.localStorage.setItem("user_id", res.user.id);
+  });
+}
+
+// LOGIN GET ROUTE
+function retrieveLogin() {
+  $.ajax({
+    url: "/api/login",
+    method: "GET"
+  }).then(function (res){
+    // USER LOGIN SUCCESSFUL
+    if(res.success === true){
+      window.localStorage.setItem("user_id", res.user.id);
+    }
+    // USER LOGIN FAILED
+    else {
+      // display login error message
+    }
+  })
+}
+
+function logout() {
+  $("#logoutButton").on("click", function (event) {
+    event.preventDefault();
+    window.localStorage.removeItem("user_id");
+    window.location.href = //login page
+  });
 }
