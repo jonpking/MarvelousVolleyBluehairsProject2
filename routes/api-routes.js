@@ -28,13 +28,14 @@ module.exports = function (app) {
   });
 
   // get user login
-  app.get("/api/login", function (req, res) {
+  app.get("/api/login/:email/:password", function (req, res) {
     db.User.findOne({
       where: {
-        id: req.user.id
+        id: req.user.id,
+        user_name: req.params.email
       }
     }).then(function (user) {
-      bcrypt.compare(req.body.password, user.password, function (err, res) {
+      bcrypt.compare(req.params.password, user.password, function (err, res) {
         if (res) {
           // Passwords match
           res.json({
