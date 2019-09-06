@@ -1,3 +1,5 @@
+$(function () {
+
 let finalGame = [];
 
 /**
@@ -55,6 +57,7 @@ $("#searchSubmit").on("click", function (event) {
     url: queryURL,
     method: "GET"
   }).then(updatePage).done()
+
   // CLICK HANDLERS - SUBMIT
 // ==========================================================
   $("#confirmSelect").on("click", function (event) {
@@ -85,6 +88,7 @@ function addGameToDB(selectedGames) {
     });
 }
 
+<<<<<<< HEAD
 // LOGIN POST ROUTE
 function registerLogin() {
   const body = {
@@ -121,3 +125,45 @@ function logout() {
     window.location.href = //login page
   });
 }
+=======
+// Add to Wishlist
+  $(".wishList").on("click", function (event) {
+    event.preventDefault();
+    var id = $(this).data("id");
+    var onWishlist = {
+      on_wishlist: 1
+    };
+
+    // Send the PUT request.
+    $.ajax("/api/games/" + id, {
+      type: "PUT",
+      data: onWishlist
+    }).then(
+      function () {
+        console.log("Added Game to Wishlist");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  // Delete a Game
+  $(".deleteGame").on("click", function (event) {
+    event.preventDefault();
+    var id = $(this).data("id");
+
+    // Send the DELETE request.
+    $.ajax("/api/games/" + id, {
+      type: "DELETE"
+    }).then(
+      function () {
+        console.log("Deleted Game", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+
+});
+>>>>>>> b420a9d61f5a88f43a309a5fed1d4ad186dacb8b

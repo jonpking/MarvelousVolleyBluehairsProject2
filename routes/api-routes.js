@@ -2,13 +2,36 @@ const db = require("../models");
 const bcrypt = require("bcrypt");
 
 module.exports = function (app) {
+
+    // get all
+    app.get("/", function (req, res) {
+      db.Game.findAll({}).then(function(data) {
+        const obj = {
+          games: data
+        };
+      console.log(obj)
+      res.render("index", obj);
+      });
+    });
+
+    // get all games 
+    app.get("/inventory", function (req, res) {
+      db.Game.findAll({}).then(function(data) {
+        const obj = {
+          games: data
+        };
+      console.log(obj)
+      res.render("inventory", obj);
+      });
+    });
+
   // get all games owned by a single user
   app.get("/api/games", function (req, res) {
     db.Game.findAll({
-      // where: {
-      //   id: req.user.id
-      // },
-      // include: [db.Users]
+      where: {
+        id: req.user.id
+      },
+      include: [db.Users]
     }).then(function (dbGames) {
       res.json(dbGames);
     });
@@ -17,11 +40,11 @@ module.exports = function (app) {
   // get all games on wishlist of a single user
   app.get("/api/games/wishlist", function (req, res) {
     db.Game.findAll({
-      // where: {
-      //   wishlisted: true,
-      //   id: req.user.id
-      // },
-      // include: [db.Users]
+      where: {
+        wishlisted: true,
+        id: req.user.id
+      },
+      include: [db.Users]
     }).then(function (dbGames) {
       res.json(dbGames);
     });
@@ -95,14 +118,30 @@ module.exports = function (app) {
     });
   });
 
+
+  app.put("/api/games/:id", function(req, res) {
+    db.Game.update({
+      on_wishlist: req.body.on_wishlist,
+    }, {
+      where: {
+          id: req.params.id
+      }
+    }).then(function(result){
+      console.log(result);
+      res.json(result);
+    });
+  });
+
+
   // delete specific game from inventory
-  app.delete("/api/games/:game", function (req, res) {
+  app.delete("/api/games/:id", function (req, res) {
     db.Game.destroy({
       where: {
-        game: req.params.game,
-        id: req.user.id
+        // game: req.params.game,
+        id: req.params.id
       }
     }).then(function (dbGames) {
+      console.log(dbGames);
       res.json(dbGames);
     });
   });
