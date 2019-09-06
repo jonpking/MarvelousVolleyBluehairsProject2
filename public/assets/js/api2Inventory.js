@@ -87,7 +87,6 @@ function addGameToDB(selectedGames) {
       window.location.reload();
     });
 }
-<<<<<<< HEAD
 
 // Add to Wishlist
   $(".wishList").on("click", function (event) {
@@ -129,5 +128,3 @@ function addGameToDB(selectedGames) {
 
 
 });
-=======
->>>>>>> 2fc539b8d489a9f0ad903b0615ff9b7869565e28
