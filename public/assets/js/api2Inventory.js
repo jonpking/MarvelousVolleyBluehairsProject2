@@ -88,7 +88,6 @@ function addGameToDB(selectedGames) {
     });
 }
 
-<<<<<<< HEAD
 // LOGIN POST ROUTE
 function registerLogin() {
   const body = {
@@ -102,9 +101,9 @@ function registerLogin() {
 }
 
 // LOGIN GET ROUTE
-function retrieveLogin() {
+function retrieveLogin(emailInput, passwordInput) {
   $.ajax({
-    url: "/api/login",
+    url: "/api/login/" + emailInput + "/" + passwordInput,
     method: "GET"
   }).then(function (res){
     // USER LOGIN SUCCESSFUL
@@ -114,18 +113,25 @@ function retrieveLogin() {
     // USER LOGIN FAILED
     else {
       // display login error message
+      $("#invalidLogin").append("<b>INVALID LOGIN</b>");
     }
-  })
+  });
 }
 
 function logout() {
   $("#logoutButton").on("click", function (event) {
     event.preventDefault();
     window.localStorage.removeItem("user_id");
-    window.location.href = //login page
+    window.location.href = login.html
   });
 }
-=======
+
+function checkIfLoggedIn() {
+  if (window.localStorage.getItem("user_id" !== undefined)){
+    window.location.href = inventory.html
+  };
+}
+
 // Add to Wishlist
   $(".wishList").on("click", function (event) {
     event.preventDefault();
@@ -166,4 +172,3 @@ function logout() {
 
 
 });
->>>>>>> b420a9d61f5a88f43a309a5fed1d4ad186dacb8b
