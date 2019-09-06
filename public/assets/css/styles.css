@@ -15,3 +15,8 @@ html {
 .jumbotron {
     padding: 1%;
 }
+
+#gameTableImage {
+    overflow: hidden;
+    height: 65%;
+}
