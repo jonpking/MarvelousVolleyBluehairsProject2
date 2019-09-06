@@ -1,3 +1,7 @@
+require('dotenv').config()
+
+
+
 $(function () {
 
 let finalGame = [];
@@ -10,7 +14,7 @@ let finalGame = [];
 function buildQueryURL() {
   var game = $(".form-control").val().trim();
   console.log(game)
-  const queryURL = "https://www.boardgameatlas.com/api/search?limit=10&name=" + game + "&client_id=1FCJGZDFEs";
+  const queryURL = "https://www.boardgameatlas.com/api/search?limit=10&name=" + game + "&client_id=" + process.env.CLIENT_ID;
   return queryURL
 }
 
