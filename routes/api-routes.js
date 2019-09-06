@@ -27,10 +27,17 @@ module.exports = function (app) {
   // get all games owned by a single user
   app.get("/api/games", function (req, res) {
     db.Game.findAll({
+<<<<<<< HEAD
       where: {
         id: req.user.id
       },
       include: [db.Users]
+=======
+      // where: {
+      //   id: req.user.id
+      // },
+      // include: [db.Users]
+>>>>>>> 2fc539b8d489a9f0ad903b0615ff9b7869565e28
     }).then(function (dbGames) {
       res.json(dbGames);
     });
@@ -39,11 +46,19 @@ module.exports = function (app) {
   // get all games on wishlist of a single user
   app.get("/api/games/wishlist", function (req, res) {
     db.Game.findAll({
+<<<<<<< HEAD
       where: {
         wishlisted: true,
         id: req.user.id
       },
       include: [db.Users]
+=======
+      // where: {
+      //   wishlisted: true,
+      //   id: req.user.id
+      // },
+      // include: [db.Users]
+>>>>>>> 2fc539b8d489a9f0ad903b0615ff9b7869565e28
     }).then(function (dbGames) {
       res.json(dbGames);
     });
@@ -97,7 +112,11 @@ module.exports = function (app) {
 
 
   // delete specific game from inventory
+<<<<<<< HEAD
   app.delete("/api/games/:id", function (req, res) {
+=======
+  app.delete("/api/games/:game", function (req, res) {
+>>>>>>> 2fc539b8d489a9f0ad903b0615ff9b7869565e28
     db.Game.destroy({
       where: {
         // game: req.params.game,
