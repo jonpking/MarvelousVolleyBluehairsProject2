@@ -29,19 +29,19 @@ module.exports = function (sequelize, DataTypes) {
         on_wishlist: {
             type: DataTypes.BOOLEAN,
             allowNull: false
-        },
-        user_id: {
-            type: DataTypes.INTEGER
         }
+        // user_id: {
+        //     type: DataTypes.INTEGER
+        // }
     });
 
-    Game.associate = function (models) {
-        Game.belongsTo(models.User, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+    // Game.associate = function (models) {
+    //     Game.belongsTo(models.User, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
 
     return Game;
 };

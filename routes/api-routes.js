@@ -1,5 +1,5 @@
 const db = require("../models");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 
 module.exports = function (app) {
 
@@ -38,80 +38,80 @@ module.exports = function (app) {
     });
 
   // get all games owned by a single user
-  app.get("/api/games", function (req, res) {
-    db.Game.findAll({
-      where: {
-        id: req.user.id
-      },
-      include: [db.Users]
-    }).then(function (dbGames) {
-      res.json(dbGames);
-    });
-  });
+  // app.get("/api/games", function (req, res) {
+  //   db.Game.findAll({
+  //     where: {
+  //       id: req.user.id
+  //     },
+  //     include: [db.Users]
+  //   }).then(function (dbGames) {
+  //     res.json(dbGames);
+  //   });
+  // });
 
   // get all games on wishlist of a single user
-  app.get("/api/games/wishlist", function (req, res) {
-    db.Game.findAll({
-      where: {
-        wishlisted: true,
-        id: req.user.id
-      },
-      include: [db.Users]
-    }).then(function (dbGames) {
-      res.json(dbGames);
-      res.render("wishlist", dbGames);
-    });
-  });
+  // app.get("/api/games/wishlist", function (req, res) {
+  //   db.Game.findAll({
+  //     where: {
+  //       wishlisted: true,
+  //       id: req.user.id
+  //     },
+  //     include: [db.Users]
+  //   }).then(function (dbGames) {
+  //     res.json(dbGames);
+  //     res.render("wishlist", dbGames);
+  //   });
+  // });
 
     // get all games on wishlist of a single user
-    app.get("/api/wishlist", function (req, res) {
-      db.Game.findAll({
-        where: {
-          wishlisted: true,
-          id: req.user.id
-        },
-        include: [db.Users]
-      }).then(function (dbGames) {
-        res.json(dbGames);
-      });
-    });
+    // app.get("/api/wishlist", function (req, res) {
+    //   db.Game.findAll({
+    //     where: {
+    //       wishlisted: true,
+    //       id: req.user.id
+    //     },
+    //     include: [db.Users]
+    //   }).then(function (dbGames) {
+    //     res.json(dbGames);
+    //   });
+    // });
 
   // get user login
-  app.post("/api/login", function (req, res) {
-    db.User.findOne({
-      where: {
-        email: req.body.email
-      }
-    }).then(function (user) {
-      bcrypt.compare(req.body.password, user.password, function (err, response) {
-        if (response) {
-          // Passwords match
-          res.json({
-            success: true,
-            user: user
-          });
-        } else {
-          // Passwords don't match
-          res.json({
-            success: false
-          });
-        }
-      });
-    });
-  });
+  // app.post("/api/login", function (req, res) {
+  //   db.User.findOne({
+  //     where: {
+  //       email: req.body.email
+  //     }
+  //   }).then(function (user) {
+  //     bcrypt.compare(req.body.password, user.password, function (err, response) {
+  //       if (response) {
+  //         // Passwords match
+  //         res.json({
+  //           success: true,
+  //           user: user
+  //         });
+  //       } else {
+  //         // Passwords don't match
+  //         res.json({
+  //           success: false
+  //         });
+  //       }
+  //     });
+  //   });
+  // });
 
   // register a new user login
-  app.post("/api/login/register", function (req, res) {
-    console.log("Req: ", req);
-    bcrypt.hash(req.body.password, 10, function (err, hash) {
-      db.User.create({
-        email: req.body.email,
-        password: hash
-      }).then(function (user) {
-        res.json(user);
-      });
-    })
-  });
+  // app.post("/api/login/register", function (req, res) {
+  //   console.log("Req: ", req);
+  //   bcrypt.hash(req.body.password, 10, function (err, hash) {
+  //     db.User.create({
+  //       email: req.body.email,
+  //       password: hash
+  //     }).then(function (user) {
+  //       res.json(user);
+  //     });
+  //   })
+  // });
 
   // post new game to inventory
   app.post("/api/games", function (req, res) {
@@ -123,8 +123,8 @@ module.exports = function (app) {
       playtime_min: req.body.game[5],
       playtime_max: req.body.game[6],
       description: req.body.game[2],
-      on_wishlist: false,
-      user_id: req.user
+      on_wishlist: false
+      // user_id: req.user
     }).then(function (dbGames) {
       res.json(dbGames);
     });
@@ -140,8 +140,8 @@ module.exports = function (app) {
       playtime_min: req.body[5],
       playtime_max: req.body[6],
       description: req.body[2],
-      on_wishlist: true,
-      user_id: req.user
+      on_wishlist: true
+      // user_id: req.user
     }).then(function (dbGames) {
       res.json(dbGames);
     });
