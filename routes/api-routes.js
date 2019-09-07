@@ -3,13 +3,6 @@ const bcrypt = require("bcrypt");
 
 module.exports = function (app) {
 
-
-    // get all
-    app.get("/", function (req, res) {
-      db.Game.findAll({}).then(function(data) {
-        const obj = {
-          games: data
-        };
   // get all
   app.get("/", function (req, res) {
     db.Game.findAll({}).then(function (data) {
@@ -70,7 +63,6 @@ module.exports = function (app) {
     });
   });
 
-<<<<<<< HEAD
     // get all games on wishlist of a single user
     app.get("/api/wishlist", function (req, res) {
       db.Game.findAll({
@@ -83,7 +75,7 @@ module.exports = function (app) {
         res.json(dbGames);
       });
     });
-=======
+
   // get user login
   app.get("/api/login/:email/:password", function (req, res) {
     db.User.findOne({
@@ -120,7 +112,6 @@ module.exports = function (app) {
       });
     })
   });
->>>>>>> ecc52d6d1bf41fbbfde38840f40e439d09fe17c5
 
   // post new game to inventory
   app.post("/api/games", function (req, res) {
@@ -193,4 +184,6 @@ module.exports = function (app) {
       res.json(dbGames);
     });
   });
-};
+
+}
+

@@ -2,7 +2,7 @@ tbody {
     overflow: auto;
 }
 
-body {
+/* body {
     margin: 0;
     width: 100%;
     background-color: #272b27;
@@ -18,7 +18,7 @@ html {
 
 .jumbotron {
     padding: 1%;
-}
+} */
 
 #gameTableImage {
     overflow: hidden;
