@@ -1,0 +1,68 @@
+<body>
+      <!-- NAV BAR -->
+      <ul class="nav justify-content-end" style="background-color: #000000">
+         <li class="nav-item">
+            <a class="nav-link active text-white" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/inventory">Inventory</a>
+        </li>
+         <li class="nav-item">
+            <a class="nav-link text-white" href="/wishlist">Wishlist</a>
+        </li>
+        <li class="nav-item">
+            <button type="button" class="logoutButton btn btn-outline-success" id="logoutButton"> Logout </button>
+        </li>
+      </ul>
+
+{{!-- INV JUMOTRON --}}
+<div class="jumbotron jumbotron-fluid" style="background-color: #6AB061">
+  <div class="container">
+    <h1 class="display-4" style="color:#272b27">Wishlist</h1>
+    {{!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> --}}
+  </div>
+</div>
+
+<!-- TABLE  -->
+<div class="p-5 container h-100"> 
+  
+<!-- FILTERS -->
+
+<table class="table table-hover" >
+        <thead class="thead text-white" style="background-color: #272b27">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Image</th>
+            <th scope="col">Game Title </th>
+            <th scope="col">Description</th>
+            <th scope="col">Players</th>
+            <th scope="col">Playing Time</th>
+            {{!-- <th scope="col">Age</th>
+            <th scope="col">Complexity Rating</th> --}}
+             <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+               {{#each games}}
+              {{#if on_wishlist}}
+          <tr>
+              <ul>
+              <td>{{this.id}}</td>
+              <td> <img width="150" height="Auto" src={{this.image_URL}}></td>
+              <td> {{this.title}}</td>
+              <td> {{this.description}}</td>
+              <td> {{this.player_min}} - {{this.player_max}} </td>
+              <td> {{this.playtime_min}} - {{this.playtime_max}} </td>
+               {{!-- <td> {{this.min_age}}</td>
+               <td> {{this.average_user_rating}}</td> --}}
+               {{!-- <td><button type="button" class="wishList btn btn-warning" id="wishList" data-id="{{this.id}}" data-newWishlist={{wishList}}> Wishlist </button></td> --}}
+                <td><button type="button" class="deleteGame btn btn-danger" id="deleteGame" data-id="{{this.id}}"> Delete </button></td>
+              </ul>
+          </tr>
+          {{/if}}
+              {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+</body>

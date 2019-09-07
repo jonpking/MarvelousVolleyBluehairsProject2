@@ -1,61 +1,67 @@
-
-<body>
+<body style="background-color: #6AB061">
 
     <!-- NAV BAR -->
     <ul class="nav justify-content-end" style="background-color: #000000">
         <li class="nav-item">
-            <a class="nav-link text-white" href="/login">Login</a>
+            <a class="nav-link text-white" href="/">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-white" href="/inventory">Inventory</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/wishlist">Wishlist</a>
+        </li>
     </ul>
 
-    <div class="container-fluid">
+    {{!-- <div class="container-fluid"> --}}
 
-        <!-- JUMBOTRON -->
-        <div class="jumbotron jumbotron-fluid" style="background-color: #272b27">
-            <div class="container">
-                <div class="text-center">
-                    <h1 class="text-center" style="color:#6AB061">Gambit game management.</h1>
-                    <h2 class="text-center" style="color:#6AB061">For the games you have, and the ones you
-                        want.</h2>
-                    <br>
-                    <div class="row">
+    <!-- JUMBOTRON -->
+    <div class="jumbotron jumbotron-fluid" style="background-color: #272b27">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="display-4" style="color:#6AB061">Gambit Game Management</h1>
+                <h3 class="text-center" style="color:azure"> For the games you have, and the ones you
+                want.</h3>
+                <br>
+                <div class="row">
 
-                        <!-- LOGIN FORM -->
-                        <div class="col-4">
-                            <div class="d-flex justify-content-center h-100">
-                                <div class="card p-3 mb-2 text-dark" style="width: 18rem;">
-                                    <img src="assets/images/SVG/Project Logo.svg" class="card-img-top"
+                    <!-- LOGIN FORM -->
+                    <div class="col-4">
+                        <div class="d-flex justify-content-center h-100">
+                            <div class="card p-3 mb-2 text-dark" style="width: 18rem;">
+                                <img src="assets/images/SVG/Artwork.svg" class="card-img-top"
                                         alt="card image">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Login</h5>
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp" placeholder="Enter email">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Password</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword1"
-                                                    placeholder="Password">
-                                            </div>
-                                            <button type="submit" class="btn btn-success">Submit</button>
-                                        </form>
-                                    </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Login</h5>
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" placeholder="Enter email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Password">
+                                        </div>
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-
-                        <img class="col-8" src="assets/images/AdobeStock_260199610.jpeg" class="rounded"
-                            style="width: auto%; height:65%; overflow: hidden" alt="gamers image">
                     </div>
+
+                    {{!-- <img class="col-8" src="assets/images/AdobeStock_260199610.jpeg" class="rounded"
+                        style="width: auto%; height:65%; overflow: hidden" alt="gamers image"> --}}
+
+                        <video class="col-8" controls autoplay>
+                                    <source src="assets/images/AdobeStock_245196779_Video_HD_Preview.mov"  style="width: auto%; height:65%; overflow: hidden">
+                                </video>
                 </div>
             </div>
         </div>
-
     </div>
+
+    {{!-- </div> --}}
 
 </body>

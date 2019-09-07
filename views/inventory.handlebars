@@ -1,3 +1,5 @@
+<body>
+
 
       <!-- NAV BAR -->
       <ul class="nav justify-content-end" style="background-color: #000000">
@@ -10,13 +12,23 @@
          <li class="nav-item">
             <a class="nav-link text-white" href="/wishlist">Wishlist</a>
         </li>
+         <li class="nav-item">
+            <button type="button" class="logoutButton btn btn-outline-success" id="logoutButton"> Logout </button>
+        </li>
       </ul>
 
+{{!-- INV JUMOTRON --}}
+<div class="jumbotron jumbotron-fluid" style="background-color: #272b27">
+  <div class="container">
+    <h1 class="display-4" style="color:#6AB061">Inventory</h1>
+    {{!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> --}}
+  </div>
+</div>
 
 
  <!-- FIND GAME -->
-    <div class="p-5 container h-100" > 
-    <div class = "p-3 mb-2">
+    <div class="p-5 container h-100"> 
+    <div class = "p-3 mb-2 text-dark">
         <form>
                 <div class="form-group">
                   <label for="game-input">Find your game</label>
@@ -27,69 +39,40 @@
 </div>
 </div>
 
-
 <!-- TABLE  -->
 <div class="p-5 container h-100"> 
   
 <!-- FILTERS -->
-<div class="btn-group">
-    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Action
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
-    </div>
-  </div>
-
-  <div class="btn-group">
-      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Action
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
-      </div>
-    </div>
-
-
-
-<table class="table table-hover" >
+<table class="table table-striped">
         <thead class="thead text-white" style="background-color: #272b27">
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Image</th>
-            <th scope="col">Game Title </th>
-            <th scope="col">Description</th>
-            <th scope="col">Players</th>
-            <th scope="col">Playing Time</th>
+            <th class="text-center" scope="col">#</th>
+            <th class="text-center" scope="col">Image</th>
+            <th class="text-center" scope="col">Game Title </th>
+            <th class="text-center" scope="col">Description</th>
+            <th class="text-center" scope="col">Players</th>
+            <th class="text-center" scope="col">Playing Time</th>
             {{!-- <th scope="col">Age</th>
             <th scope="col">Complexity Rating</th> --}}
              <th scope="col">Wishlist</th>
              <th scope="col">Delete</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="thead text-dark">
                {{#each games}}
               {{#unless on_wishlist}}
           <tr>
               <ul>
               <td>{{this.id}}</td>
               <td> <img width="150" height="Auto" src={{this.image_URL}}></td>
-              <td> {{this.title}}</td>
+              <td>{{this.title}}</td>
               <td> {{this.description}}</td>
               <td> {{this.player_min}} - {{this.player_max}} </td>
               <td> {{this.playtime_min}} - {{this.playtime_max}} </td>
                {{!-- <td> {{this.min_age}}</td>
                <td> {{this.average_user_rating}}</td> --}}
                <td><button type="button" class="wishList btn btn-warning" id="wishList" data-id="{{this.id}}" data-newWishlist={{wishList}}> Wishlist </button></td>
-                <td><button type="button" class="deleteGame btn btn-warning" id="deleteGame" data-id="{{this.id}}"> Delete </button></td>
+                <td><button type="button" class="deleteGame btn btn-danger" id="deleteGame" data-id="{{this.id}}"> Delete </button></td>
               </ul>
           </tr>
           {{/unless}}
@@ -123,3 +106,5 @@
     </div>
   </div>
 </div>
+
+</body>

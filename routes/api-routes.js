@@ -2,6 +2,7 @@ const db = require("../models");
 
 module.exports = function (app) {
 
+
     // get all
     app.get("/", function (req, res) {
       db.Game.findAll({}).then(function(data) {
@@ -21,6 +22,18 @@ module.exports = function (app) {
         };
       console.log(obj)
       res.render("inventory", obj);
+      });
+    });
+
+
+    // get all games 
+    app.get("/wishlist", function (req, res) {
+      db.Game.findAll({}).then(function(data) {
+        const obj = {
+          games: data
+        };
+      console.log(obj)
+      res.render("wishlist", obj);
       });
     });
 
@@ -46,8 +59,22 @@ module.exports = function (app) {
       include: [db.Users]
     }).then(function (dbGames) {
       res.json(dbGames);
+      res.render("wishlist", dbGames);
     });
   });
+
+    // get all games on wishlist of a single user
+    app.get("/api/wishlist", function (req, res) {
+      db.Game.findAll({
+        where: {
+          wishlisted: true,
+          id: req.user.id
+        },
+        include: [db.Users]
+      }).then(function (dbGames) {
+        res.json(dbGames);
+      });
+    });
 
   // post new game to inventory
   app.post("/api/games", function (req, res) {
