@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS gambit_db;
+CREATE DATABASE gambit_db;
