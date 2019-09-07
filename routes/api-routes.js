@@ -51,15 +51,14 @@ module.exports = function (app) {
   });
 
   // get user login
-  app.get("/api/login/:email/:password", function (req, res) {
+  app.post("/api/login", function (req, res) {
     db.User.findOne({
       where: {
-        id: req.user.id,
-        user_name: req.params.email
+        email: req.body.email
       }
     }).then(function (user) {
-      bcrypt.compare(req.params.password, user.password, function (err, res) {
-        if (res) {
+      bcrypt.compare(req.body.password, user.password, function (err, response) {
+        if (response) {
           // Passwords match
           res.json({
             success: true,
@@ -77,9 +76,10 @@ module.exports = function (app) {
 
   // register a new user login
   app.post("/api/login/register", function (req, res) {
+    console.log("Req: ", req);
     bcrypt.hash(req.body.password, 10, function (err, hash) {
       db.User.create({
-        user_name: req.body.user_name,
+        email: req.body.email,
         password: hash
       }).then(function (user) {
         res.json(user);
@@ -90,14 +90,15 @@ module.exports = function (app) {
   // post new game to inventory
   app.post("/api/games", function (req, res) {
     db.Game.create({
-      title: req.body[1],
-      image_URL: req.body[0],
-      player_min: req.body[3],
-      player_max: req.body[4],
-      playtime_min: req.body[5],
-      playtime_max: req.body[6],
-      description: req.body[2],
-      on_wishlist: false
+      title: req.body.game[1],
+      image_URL: req.body.game[0],
+      player_min: req.body.game[3],
+      player_max: req.body.game[4],
+      playtime_min: req.body.game[5],
+      playtime_max: req.body.game[6],
+      description: req.body.game[2],
+      on_wishlist: false,
+      user_id: req.user
     }).then(function (dbGames) {
       res.json(dbGames);
     });
@@ -113,7 +114,8 @@ module.exports = function (app) {
       playtime_min: req.body[5],
       playtime_max: req.body[6],
       description: req.body[2],
-      on_wishlist: true
+      on_wishlist: true,
+      user_id: req.user
     }).then(function (dbGames) {
       res.json(dbGames);
     });

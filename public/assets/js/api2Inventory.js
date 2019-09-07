@@ -1,10 +1,13 @@
-$(document).ready(function () {
-  if (window.localStorage.getItem("user_id" !== undefined)) {
-    window.location.href = inventory.html
-  };
-});
+
 
 $(function () {
+  // if (window.localStorage.getItem("user_id") !== undefined) {
+  //   if (window.location.href === "/inventory") {
+  //     return
+  //   }
+
+  //   window.location.href = "/inventory"
+  // };
 
   let finalGame = [];
 
@@ -87,12 +90,12 @@ $(function () {
 
   $("#loginSubmit").on("click", function (event) {
     event.preventDefault();
-    retrieveLogin(loginEmailInput, loginPasswordInput);
+    retrieveLogin($("#loginEmailInput").val().trim(), $("#loginPasswordInput").val().trim());
   });
 
-  $("registerSubmit").on("click", function (event) {
+  $("#registerSubmit").on("click", function (event) {
     event.preventDefault();
-    registerLogin(registerEmailInput, registerPasswordInput);
+    registerLogin($("#registerEmailInput").val().trim(), $("#registerPasswordInput").val().trim());
   });
 
   $("#logoutButton").on("click", function (event) {
@@ -102,7 +105,7 @@ $(function () {
 
   // GAMES POST ROUTE 
   function addGameToDB(selectedGames) {
-    $.post("/api/games", selectedGames)
+    $.post("/api/games", { game: selectedGames, user: localStorage.getItem("user_id") })
       .then(function () {
         console.log("posted");
         window.location.reload();
@@ -111,25 +114,29 @@ $(function () {
 
   // REGISTER NEW LOGIN POST ROUTE
   function registerLogin(email, password) {
+    console.log(email, password)
     const body = {
-      username: email.val().trim(),
-      password: password.val().trim()
+      email: email,
+      password: password
     }
     $.post("/api/login/register", body)
       .then(function (res) {
-        window.localStorage.setItem("user_id", res.user.id);
+        console.log(res)
+        window.localStorage.setItem("user_id", res.id);
+        window.location.href = "/inventory"
       });
   }
 
   // LOGIN TO EXISTING GET ROUTE
   function retrieveLogin(email, password) {
-    $.ajax({
-      url: "/api/login/" + email + "/" + password,
-      method: "GET"
-    }).then(function (res) {
+    $.post("/api/login",
+      { email, password }
+    ).then(function (res) {
+      console.log(res)
       // USER LOGIN SUCCESSFUL
       if (res.success === true) {
         window.localStorage.setItem("user_id", res.user.id);
+        window.location.href = "/inventory"
       }
       // USER LOGIN FAILED
       else {
@@ -141,7 +148,7 @@ $(function () {
 
   function logout() {
     window.localStorage.removeItem("user_id");
-    window.location.href = login.html
+    window.location.href = "/login"
   }
 
   // Add to Wishlist
