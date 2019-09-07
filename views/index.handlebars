@@ -1,4 +1,3 @@
-
 <body>
 
     <!-- NAV BAR -->
@@ -24,34 +23,62 @@
                     <div class="row">
 
                         <!-- LOGIN FORM -->
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="d-flex justify-content-center h-100">
                                 <div class="card p-3 mb-2 text-dark" style="width: 18rem;">
-                                    <img src="assets/images/SVG/Project Logo.svg" class="card-img-top"
-                                        alt="card image">
+                                    <img src="assets/images/SVG/Project Logo.svg" class="card-img-top" alt="card image">
                                     <div class="card-body">
                                         <h5 class="card-title">Login</h5>
                                         <p id="invalidLogin" style="color: red"></p>
-                                        <form>
+                                        <form id="loginForm">
                                             <div class="form-group">
-                                                <label for="emailInput">Email address</label>
-                                                <input type="email" class="form-control" id="emailInput"
+                                                <label for="loginEmailInput">Email address</label>
+                                                <input type="email" class="form-control" id="loginEmailInput"
                                                     aria-describedby="emailHelp" placeholder="Enter email">
                                             </div>
                                             <div class="form-group">
-                                                <label for="passwordInput">Password</label>
-                                                <input type="password" class="form-control" id="passwordInput"
+                                                <label for="loginPasswordInput">Password</label>
+                                                <input type="password" class="form-control" id="loginPasswordInput"
                                                     placeholder="Password">
                                             </div>
-                                            <button type="submit" class="btn btn-success">Submit</button>
+                                            <button type="submit" id="loginSubmit"
+                                                class="btn btn-success">Submit</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <img class="col-8" src="assets/images/AdobeStock_260199610.jpeg" class="rounded"
+                        <img class="col-6" src="assets/images/AdobeStock_260199610.jpeg" class="rounded"
                             alt="gamers image">
+
+                        <!-- REGISTER FORM -->
+                        <div class="col-3">
+                            <div class="d-flex justify-content-center h-100">
+                                <div class="card p-3 mb-2 text-dark" style="width: 18rem;">
+                                    <img src="assets/images/SVG/Project Logo.svg" class="card-img-top" alt="card image">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Register</h5>
+                                        <p id="invalidLogin" style="color: red"></p>
+                                        <form id="registerForm">
+                                            <div class="form-group">
+                                                <label for="registerEmailInput">Email address</label>
+                                                <input type="email" class="form-control" id="registerEmailInput"
+                                                    aria-describedby="emailHelp" placeholder="Enter email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="registerPasswordInput">Password</label>
+                                                <input type="password" class="form-control" id="registerPasswordInput"
+                                                    placeholder="Password">
+                                            </div>
+                                            <button type="submit" id="registerSubmit"
+                                                class="btn btn-success">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
