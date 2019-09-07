@@ -1,5 +1,5 @@
 const db = require("../models");
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 module.exports = function (app) {
 
@@ -77,41 +77,41 @@ module.exports = function (app) {
     // });
 
   // get user login
-  // app.post("/api/login", function (req, res) {
-  //   db.User.findOne({
-  //     where: {
-  //       email: req.body.email
-  //     }
-  //   }).then(function (user) {
-  //     bcrypt.compare(req.body.password, user.password, function (err, response) {
-  //       if (response) {
-  //         // Passwords match
-  //         res.json({
-  //           success: true,
-  //           user: user
-  //         });
-  //       } else {
-  //         // Passwords don't match
-  //         res.json({
-  //           success: false
-  //         });
-  //       }
-  //     });
-  //   });
-  // });
+  app.post("/api/login", function (req, res) {
+    db.User.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(function (user) {
+      bcrypt.compare(req.body.password, user.password, function (err, response) {
+        if (response) {
+          // Passwords match
+          res.json({
+            success: true,
+            user: user
+          });
+        } else {
+          // Passwords don't match
+          res.json({
+            success: false
+          });
+        }
+      });
+    });
+  });
 
   // register a new user login
-  // app.post("/api/login/register", function (req, res) {
-  //   console.log("Req: ", req);
-  //   bcrypt.hash(req.body.password, 10, function (err, hash) {
-  //     db.User.create({
-  //       email: req.body.email,
-  //       password: hash
-  //     }).then(function (user) {
-  //       res.json(user);
-  //     });
-  //   })
-  // });
+  app.post("/api/login/register", function (req, res) {
+    console.log("Req: ", req);
+    bcrypt.hash(req.body.password, 10, function (err, hash) {
+      db.User.create({
+        email: req.body.email,
+        password: hash
+      }).then(function (user) {
+        res.json(user);
+      });
+    })
+  });
 
   // post new game to inventory
   app.post("/api/games", function (req, res) {
