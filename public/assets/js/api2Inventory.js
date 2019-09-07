@@ -1,3 +1,7 @@
+$(document).ready({
+  checkIfLoggedIn();
+});
+
 $(function () {
 
   let finalGame = [];
@@ -79,6 +83,21 @@ $(function () {
     });
   });
 
+  $("#loginSubmit").on("click", function (event) {
+    event.preventDefault();
+    retrieveLogin(loginEmailInput, loginPasswordInput);
+  });
+
+  $("registerSubmit").on("click", function (event) {
+    event.preventDefault();
+    registerLogin(registerEmailInput, registerPasswordInput);
+  });
+
+  $("#logoutButton").on("click", function (event) {
+    event.preventDefault();
+    logout();
+  });
+
   // GAMES POST ROUTE 
   function addGameToDB(selectedGames) {
     $.post("/api/games", selectedGames)
@@ -88,11 +107,11 @@ $(function () {
       });
   }
 
-  // LOGIN POST ROUTE
-  function registerLogin() {
+  // REGISTER NEW LOGIN POST ROUTE
+  function registerLogin(email, password) {
     const body = {
-      username: Element.val().trim(),
-      password: Element.val().trim()
+      username: email.val().trim(),
+      password: password.val().trim()
     }
     $.post("/api/login/register", body)
       .then(function (res) {
@@ -100,10 +119,10 @@ $(function () {
       });
   }
 
-  // LOGIN GET ROUTE
-  function retrieveLogin(emailInput, passwordInput) {
+  // LOGIN TO EXISTING GET ROUTE
+  function retrieveLogin(email, password) {
     $.ajax({
-      url: "/api/login/" + emailInput + "/" + passwordInput,
+      url: "/api/login/" + email + "/" + password,
       method: "GET"
     }).then(function (res) {
       // USER LOGIN SUCCESSFUL
@@ -119,11 +138,8 @@ $(function () {
   }
 
   function logout() {
-    $("#logoutButton").on("click", function (event) {
-      event.preventDefault();
-      window.localStorage.removeItem("user_id");
-      window.location.href = login.html
-    });
+    window.localStorage.removeItem("user_id");
+    window.location.href = login.html
   }
 
   function checkIfLoggedIn() {
