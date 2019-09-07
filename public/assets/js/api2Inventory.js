@@ -1,5 +1,7 @@
-$(document).ready({
-  checkIfLoggedIn();
+$(document).ready(function () {
+  if (window.localStorage.getItem("user_id" !== undefined)) {
+    window.location.href = inventory.html
+  };
 });
 
 $(function () {
@@ -140,12 +142,6 @@ $(function () {
   function logout() {
     window.localStorage.removeItem("user_id");
     window.location.href = login.html
-  }
-
-  function checkIfLoggedIn() {
-    if (window.localStorage.getItem("user_id" !== undefined)) {
-      window.location.href = inventory.html
-    };
   }
 
   // Add to Wishlist
