@@ -3,27 +3,27 @@ const bcrypt = require("bcrypt");
 
 module.exports = function (app) {
 
-    // get all
-    app.get("/", function (req, res) {
-      db.Game.findAll({}).then(function(data) {
-        const obj = {
-          games: data
-        };
+  // get all
+  app.get("/", function (req, res) {
+    db.Game.findAll({}).then(function (data) {
+      const obj = {
+        games: data
+      };
       console.log(obj)
       res.render("index", obj);
-      });
     });
+  });
 
-    // get all games 
-    app.get("/inventory", function (req, res) {
-      db.Game.findAll({}).then(function(data) {
-        const obj = {
-          games: data
-        };
+  // get all games 
+  app.get("/inventory", function (req, res) {
+    db.Game.findAll({}).then(function (data) {
+      const obj = {
+        games: data
+      };
       console.log(obj)
       res.render("inventory", obj);
-      });
     });
+  });
 
   // get all games owned by a single user
   app.get("/api/games", function (req, res) {
@@ -120,14 +120,14 @@ module.exports = function (app) {
   });
 
 
-  app.put("/api/games/:id", function(req, res) {
+  app.put("/api/games/:id", function (req, res) {
     db.Game.update({
       on_wishlist: req.body.on_wishlist,
     }, {
       where: {
-          id: req.params.id
+        id: req.params.id
       }
-    }).then(function(result){
+    }).then(function (result) {
       console.log(result);
       res.json(result);
     });
